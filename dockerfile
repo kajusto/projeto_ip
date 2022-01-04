@@ -1,10 +1,14 @@
 #imagem a ser utilizada como ponto de partida
-FROM python:3.8.2-alpine
+FROM alpine
 
 #define a pasta dentro do container onde comandos serão executados
 WORKDIR /app
+
+# Install python/pip
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade pip setuptools
 RUN pip install Flask
-RUN pip install requests
 
 #copia arquivos local para container
 COPY . /app/
@@ -13,4 +17,4 @@ COPY . /app/
 EXPOSE 5000
 
 #executa o container
-CMD ["python3", "api-desafio.py"]
+CMD ["python3", "api_karina.py"]
