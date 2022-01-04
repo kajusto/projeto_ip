@@ -4,7 +4,6 @@ from flask import request, jsonify
 
 app = flask.Flask(__name__)
 app.config['DEBUG'] - True
-#teste
 
 @app.route('/api', methods=['POST'])
 def ip():
