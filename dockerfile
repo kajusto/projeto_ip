@@ -5,10 +5,7 @@ FROM alpine
 WORKDIR /app
 
 # Install python/pip
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
-RUN pip install Flask
+RUN apk add --no-cache python3 py3-pip
 
 #copia arquivos local para container
 COPY . /app/
